@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class EnemyGun : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private PlayerController _player;
+
+    private void Start()
     {
-        
+        _player = FindObjectOfType<PlayerController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        transform.LookAt(_player.transform);
     }
 }

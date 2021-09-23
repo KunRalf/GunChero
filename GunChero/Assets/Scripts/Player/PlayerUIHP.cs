@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHP : MonoBehaviour
+public class PlayerUIHP : MonoBehaviour
 {
     private PlayerCamera _camera;
     [SerializeField] private Slider _slider;
