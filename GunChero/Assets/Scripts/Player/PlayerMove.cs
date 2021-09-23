@@ -9,7 +9,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private FloatingJoystick _joystick;
 
     private Vector3 _playerDirection;
-    private float _rotateSpeed = 0.1f;
+    private float _rotateSpeed = 0.5f;
     private Rigidbody _playerRgb;
 
 

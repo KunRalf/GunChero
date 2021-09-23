@@ -18,15 +18,15 @@ public class PlayerAnimator : MonoBehaviour
 
     private void RunningAnimation()
     {
-        if (_joystick.Horizontal > 0 || _joystick.Vertical > 0)
+        if (_joystick.Horizontal != 0 || _joystick.Vertical != 0)
         {
             _animator.SetBool(RUNNIG_FLAG, true);
         }
-
-        if (_joystick.Horizontal == 0 || _joystick.Vertical == 0)
+        else
         {
             _animator.SetBool(RUNNIG_FLAG, false);
         }
+
     }
 
     private void Update()
