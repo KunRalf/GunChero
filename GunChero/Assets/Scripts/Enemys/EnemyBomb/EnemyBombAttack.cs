@@ -6,7 +6,6 @@ public class EnemyBombAttack : MonoBehaviour
 {
 
     private int _damage;
-    
 
     private int GetDamage()
     {
