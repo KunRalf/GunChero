@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private int _health;
+    [SerializeField] private PopUpDamage _popUpDamage;
+    [SerializeField] private CapsuleCollider _deathCollider;
     private CapsuleCollider _capsuleCollider;
     private bool _isAlive = true;
 
@@ -19,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _health -= damage;
+        _popUpDamage.CreatePopUpDamage(damage);
     }
 
     private void Update()
@@ -27,11 +31,17 @@ public class PlayerController : MonoBehaviour
         {
             _isAlive = false;
             TurnOffCollider();
+            TurnOnDeathCollider();
         }
     }
 
     private void TurnOffCollider()
     {
         _capsuleCollider.enabled = false;
+    }
+
+    private void TurnOnDeathCollider()
+    {
+        _deathCollider.enabled = true;   
     }
 }

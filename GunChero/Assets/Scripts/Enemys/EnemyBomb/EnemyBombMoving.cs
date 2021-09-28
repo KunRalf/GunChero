@@ -11,19 +11,20 @@ public class EnemyBombMoving : MonoBehaviour
     private EnemyBombAnimator _enemyBombAnimator;
     private bool _isJump = false;
 
-    private void Start()
+    private IEnumerator Start()
     {
         _enemyBombAnimator = GetComponent<EnemyBombAnimator>();
         _rgb = GetComponent<Rigidbody>();
         _agent = GetComponent<NavMeshAgent>();
         _player = FindObjectOfType<PlayerController>();
+        yield return new WaitForSeconds(0.1f);
+        _agent.enabled = true;
         _agent.SetDestination(_player.transform.position);
+        
     }
 
     private void Update()
     {
-        
-        
         if (_agent.enabled) 
         {
             _agent.SetDestination(_player.transform.position);

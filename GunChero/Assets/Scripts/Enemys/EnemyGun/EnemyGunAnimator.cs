@@ -9,7 +9,7 @@ public class EnemyGunAnimator : MonoBehaviour
     private const string ATTACK_ANIM = "_isAttack";
 
 
-    private void Start()
+    private void Awake()
     {
         _animator = GetComponent<Animator>();
     }

@@ -1,0 +1,27 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+public class PlayerUI : MonoBehaviour
+{
+    [SerializeField] private Slider _hpSlider;
+    private PlayerCamera _camera;
+    private PlayerController _playerController;
+
+    private void Start()
+    {
+        _camera = FindObjectOfType<PlayerCamera>();
+        _playerController = FindObjectOfType<PlayerController>();
+        _hpSlider.minValue = 0;
+        _hpSlider.maxValue = _playerController.Health;
+    }
+
+    private void Update()
+    {
+        _hpSlider.value = _playerController.Health;
+        gameObject.transform.LookAt(_camera.transform);
+    }
+
+}
