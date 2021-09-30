@@ -10,9 +10,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CapsuleCollider _deathCollider;
     private CapsuleCollider _capsuleCollider;
     private bool _isAlive = true;
+    private bool _isShoot;
 
     public int Health => _health;
     public bool IsAlive => _isAlive;
+    public bool IsShooting { get { return _isShoot; } set { _isShoot = value; } }
 
     private void Start()
     {

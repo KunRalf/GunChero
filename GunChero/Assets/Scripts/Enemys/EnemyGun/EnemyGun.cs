@@ -13,6 +13,7 @@ public class EnemyGun : MonoBehaviour
 
     private void Update()
     {
+        if (_player.IsAlive) 
         transform.LookAt(_player.transform);
     }
 }

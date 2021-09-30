@@ -7,9 +7,12 @@ public class PlayerAnimator : MonoBehaviour
     [SerializeField] private FloatingJoystick _joystick;
     private PlayerController _playerController;
     private Animator _animator;
+    private bool _isShoot = false;
+    public bool IsShoot => _isShoot;
+
 
     private const string RUNNING_ANIMATION = "_isRun";
-    private const string SHOTING_ANIMATION = "_isShoot";
+    private const string SHO0TING_ANIMATION = "_isShoot";
     private const string DEATH_ANIMATION = "_isDeath";
 
 
@@ -24,10 +27,12 @@ public class PlayerAnimator : MonoBehaviour
         if (_joystick.Horizontal != 0 || _joystick.Vertical != 0)
         {
             _animator.SetBool(RUNNING_ANIMATION, true);
+            _playerController.IsShooting = false;
         }
         else
         {
             _animator.SetBool(RUNNING_ANIMATION, false);
+            _playerController.IsShooting = true;
         }
     }
 
@@ -39,9 +44,22 @@ public class PlayerAnimator : MonoBehaviour
         }
     }
 
+    private void ShootingAnimation()
+    {
+        if (_playerController.IsShooting)
+        {
+            _animator.SetBool(SHO0TING_ANIMATION, _playerController.IsShooting);
+        }
+        else
+        {
+            _animator.SetBool(SHO0TING_ANIMATION, _playerController.IsShooting);
+        }
+    }
+
     private void Update()
     {
         DeathAnimation();
         RunningAnimation();
+        ShootingAnimation();
     }
 }

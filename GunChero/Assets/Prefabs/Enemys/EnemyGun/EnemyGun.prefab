@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 979181704179527629}
   - component: {fileID: 393531361751692026}
   - component: {fileID: 8275844688413902148}
+  - component: {fileID: 5604749830693384905}
   m_Layer: 0
   m_Name: EnemyGun
   m_TagString: Untagged
@@ -208,6 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f49cf2f95f1c1b4ab207ea0a181306e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _health: 100
 --- !u!114 &2457530459982265745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,9 +222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83196efd50489a41b3d5568992d0b67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: -3108662692049630009, guid: bb940aa4a14d7104da74985b7a74bb3c,
-    type: 3}
   _shotPoint: {fileID: 3852795553217694824}
+  _bullet: {fileID: 7785224527487159769, guid: bb940aa4a14d7104da74985b7a74bb3c, type: 3}
 --- !u!114 &979181704179527629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,6 +267,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54935bf4c015676438b9297895339938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &5604749830693384905
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3702046168034886008}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.39930105, y: 0.9263642, z: 0.41666102}
+  m_Center: {x: -0.0019379258, y: 0.4631821, z: 0.018615842}
 --- !u!1 &5251300311411164537
 GameObject:
   m_ObjectHideFlags: 0

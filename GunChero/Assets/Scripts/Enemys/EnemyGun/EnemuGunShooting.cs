@@ -4,48 +4,40 @@ using UnityEngine;
 
 public class EnemuGunShooting : MonoBehaviour
 {
-    [SerializeField] private EnemyGunBullet _bullet;
     [SerializeField] private Transform _shotPoint;
-    private float _shootDelay = 0.7f;
+    [SerializeField] private GameObject _bullet;
     private PlayerController _player;
     private EnemyGunAnimator _animator;
-    private Coroutine _shootingCoroutine;
+    private float _delayBeforeShoot = 0.5f;
+    private float _timer;
 
     private void Start()
     {
         _player = FindObjectOfType<PlayerController>();
         _animator = GetComponent<EnemyGunAnimator>();
-        _shootingCoroutine = StartCoroutine(DelayShooting(_shootDelay));
     }
-
-    private void Shooting()
-    {
-        EnemyGunBullet bullet = Instantiate(_bullet);
-        bullet.transform.position = _shotPoint.position;
-        bullet.transform.rotation = _shotPoint.rotation;
-    }
-
 
     private void Update()
     {
-        if (!_player.IsAlive)
+        _timer += Time.deltaTime;
+
+        if (_player.IsAlive)
         {
-            StopCoroutine(_shootingCoroutine);
+            if (_timer > _delayBeforeShoot)
+            {
+                _timer = 0f;
+                Shoot();
+                _animator.ShootAnim();
+            }
         }
+
+
     }
 
-    private IEnumerator DelayShooting(float time)
+    private void Shoot()
     {
-        int n = 1;
-        for (int i = 0; i < n; i++)
-        {
-            n++;
-            Shooting();
-            _animator.ShootAnim();
-            yield return new WaitForSeconds(time);
-        }
-            
-        
-        
+        GameObject bullet = Instantiate(_bullet) as GameObject;
+        bullet.transform.position = _shotPoint.position;
+        bullet.transform.rotation = _shotPoint.rotation;
     }
 }
