@@ -20169,6 +20169,7 @@ GameObject:
   - component: {fileID: 5396031479063073839}
   - component: {fileID: 5241209652679091806}
   - component: {fileID: 3632509669980671697}
+  - component: {fileID: 7145064545034090178}
   m_Layer: 0
   m_Name: EnemyBomb
   m_TagString: Untagged
@@ -20236,9 +20237,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.25627366
-  m_Height: 0.6255127
+  m_Height: 1.7229031
   m_Direction: 1
-  m_Center: {x: 0.0035324693, y: 0.31775635, z: -0.019426256}
+  m_Center: {x: 0.0035324693, y: 0.8664517, z: -0.019426256}
 --- !u!54 &5367781686178169491
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20313,6 +20314,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7145064545034090178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5367781686178169500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f49cf2f95f1c1b4ab207ea0a181306e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 100
 --- !u!1 &5367785765531736922
 GameObject:
   m_ObjectHideFlags: 0

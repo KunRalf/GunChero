@@ -6,6 +6,7 @@ public class PlayerAnimator : MonoBehaviour
 {
     [SerializeField] private FloatingJoystick _joystick;
     private PlayerController _playerController;
+    private EnemyDetector _enemyDetector;
     private Animator _animator;
     private bool _isShoot = false;
     public bool IsShoot => _isShoot;
@@ -20,6 +21,7 @@ public class PlayerAnimator : MonoBehaviour
     {
         _playerController = GetComponent<PlayerController>();
         _animator = GetComponent<Animator>();
+        _enemyDetector = GetComponent<EnemyDetector>();
     }
 
     private void RunningAnimation()
@@ -32,7 +34,8 @@ public class PlayerAnimator : MonoBehaviour
         else
         {
             _animator.SetBool(RUNNING_ANIMATION, false);
-            _playerController.IsShooting = true;
+            if(_enemyDetector.GetEnemyCount() > 0)
+                _playerController.IsShooting = true;
         }
     }
 

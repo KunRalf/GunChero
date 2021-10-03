@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPistolShooting : MonoBehaviour
+public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] private Transform _shotPoint;
     [SerializeField] private GameObject _bullet;
-    [SerializeField] private PlayerController _player;
+    [SerializeField] private float _delayBeforeShoot = 0.5f;
+    private PlayerController _player;
     private PlayerAnimator _animator;
-    private float _delayBeforeShoot = 0.5f;
     private float _timer;
 
     private void Start()
     {
+        _player = FindObjectOfType<PlayerController>();
         _animator = GetComponent<PlayerAnimator>();
     }
 
@@ -20,12 +21,13 @@ public class PlayerPistolShooting : MonoBehaviour
     {
         _timer += Time.deltaTime;
 
-        if (_player.IsShooting) { 
-        if (_timer > _delayBeforeShoot)
-        {
-            _timer = 0f;
-            Shoot();
-        }
+        if (_player.IsShooting && _player.IsAlive) 
+        { 
+            if (_timer > _delayBeforeShoot)
+            {
+                _timer = 0f;
+                Shoot();
+            }
         }
     }
 
