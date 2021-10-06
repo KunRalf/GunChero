@@ -438,6 +438,7 @@ GameObject:
   - component: {fileID: 8744869793503282896}
   - component: {fileID: 8750539520844071898}
   - component: {fileID: 8844597722553662433}
+  - component: {fileID: 5722482448939973796}
   m_Layer: 0
   m_Name: Uzi
   m_TagString: Untagged
@@ -524,5 +525,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shotPoint: {fileID: 5844800012291570020}
-  _bullet: {fileID: 2117226314898505101, guid: dba8a1b619e10d7489270f83729ac6dc, type: 3}
   _delayBeforeShoot: 0.25
+  _enemyDetector: {fileID: 0}
+--- !u!114 &5722482448939973796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8730219247612152536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d627af088ac6d54883f22f87c920d95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: -7804674555855661590, guid: dba8a1b619e10d7489270f83729ac6dc,
+    type: 3}
+  _container: {fileID: 0}
+  _minCapacity: 0
+  _maxCapacity: 100
+  _autoExpand: 0

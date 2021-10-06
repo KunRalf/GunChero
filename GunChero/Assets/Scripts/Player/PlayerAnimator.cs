@@ -36,6 +36,8 @@ public class PlayerAnimator : MonoBehaviour
             _animator.SetBool(RUNNING_ANIMATION, false);
             if(_enemyDetector.GetEnemyCount() > 0)
                 _playerController.IsShooting = true;
+            else
+                _playerController.IsShooting = false;
         }
     }
 

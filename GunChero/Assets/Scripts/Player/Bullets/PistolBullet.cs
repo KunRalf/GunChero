@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PoolObject))]
 public class PistolBullet : MonoBehaviour
 {
     [SerializeField] private float _speed = 3f;
     [SerializeField] private int _damage = 10;
     private Rigidbody _rgb;
     private EnemyController _enemy;
+    private PoolObject _poolObject;
 
     private void Awake()
     {
         _rgb = GetComponent<Rigidbody>();
+        _poolObject = GetComponent<PoolObject>();
     }
 
     private void Start()
@@ -29,9 +32,9 @@ public class PistolBullet : MonoBehaviour
         EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
         if (enemy != null)
         {
-            _enemy.TakeDamage(_damage);
+            enemy.TakeDamage(_damage);
         }
-        Destroy(gameObject);
+        _poolObject.ReturnToPool();
 
     }
 }

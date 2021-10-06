@@ -5,21 +5,26 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] private int _health = 100;
+    [SerializeField] private ParticleSystem _targetAura;
     private EnemyDetector _enemyDetector;
+
+    private void Awake()
+    {
+        
+    }
 
     private void Start()
     {
         _enemyDetector = FindObjectOfType<EnemyDetector>();
-        _enemyDetector.AddEnemy(this);
-    }
+        EventService.Instance.CallOnJellyCreate(this);
+      }
 
 
     private void Update()
     {
         if (_health <= 0)
         {
-            Debug.Log("Enemy is dead");
-            _enemyDetector.RemoveEnemy(this);
+            DestroyEnemy();
         }
     }
 
@@ -42,5 +47,17 @@ public class EnemyController : MonoBehaviour
     {
         Destroy(gameObject);
         _enemyDetector.RemoveEnemy(this);
+    }
+
+    public void TurnOnAura()
+    {
+        if (!_targetAura.isPlaying)
+            _targetAura.Play();
+    }
+
+    public void TurnOffAura()
+    {
+        if (_targetAura.isPlaying)
+            _targetAura.Stop();
     }
 }

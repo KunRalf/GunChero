@@ -4,41 +4,52 @@ using UnityEngine;
 
 public class EnemyDetector : MonoBehaviour
 {
-    [SerializeField] private List<EnemyController> _enemys = new List<EnemyController>();
+    [SerializeField] private List<EnemyController> _enemies = new List<EnemyController>();
     private Transform _closestEnemy;
+    [SerializeField] private EventService _eventService;
+
+    private void OnEnable()
+    {
+        EventService.Instance.OnEnemyCreate += AddEnemy;
+    }
+
+    private void OnDisable()
+    {
+        EventService.Instance.OnEnemyCreate -= AddEnemy;
+    }
 
     public int GetEnemyCount()
     {
-        return _enemys.Count;
+        return _enemies.Count;
     }
 
     public void AddEnemy(EnemyController enemy)
     {
-        _enemys.Add(enemy);
+        _enemies.Add(enemy);
     }
 
     public void ClearEnemyList()
     {
-        _enemys.Clear();
+        _enemies.Clear();
     }
 
     public void RemoveEnemy(EnemyController enemy)
     {
-        _enemys.Remove(enemy);
+        _enemies.Remove(enemy);
     }
 
     public Transform GetClosestEnemy()
     {
-        _closestEnemy = ClosestEnemy(_enemys);
+        _closestEnemy = ClosestEnemy();
         return _closestEnemy;
     }
 
-    private Transform ClosestEnemy(List<EnemyController> enemies)
+    public Transform ClosestEnemy()
     {
         Transform closestEnemy = null;
         float _minDist = Mathf.Infinity;
         Vector3 currentPos = transform.position;
-        foreach (EnemyController enemy in enemies)
+        foreach (EnemyController enemy in _enemies)
         {
             float dist = Vector3.Distance(enemy.transform.position, currentPos);
             if (dist < _minDist)

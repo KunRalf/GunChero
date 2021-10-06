@@ -23,9 +23,9 @@ public class PlayerCamera : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, toPosition, _lerpSpeed * Time.deltaTime);
     }
 
-    public void ChangeOffset(Vector3 playerPos)
+/*    public void ChangeOffset(Vector3 playerPos)
     {
         Vector3 newOffset = playerPos - transform.position;
         _offset = newOffset;
-    }
+    }*/
 }
