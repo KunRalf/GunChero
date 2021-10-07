@@ -3692,6 +3692,7 @@ GameObject:
   - component: {fileID: 6713500748335540159}
   - component: {fileID: 6713500748335540160}
   - component: {fileID: 6713500748335540161}
+  - component: {fileID: 6713500748335540162}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3726,9 +3727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f352103e3275b4e42bba95eec3a42368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _popUpDamage: {fileID: 1098460988142097009, guid: 5b639ce3eba692f4390cab8889db364a,
-    type: 3}
-  _tager: {fileID: 711373600}
+  _popUp: {fileID: 1218432685}
 --- !u!114 &6713500748335540161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3743,6 +3742,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemies: []
   _eventService: {fileID: 1780068855}
+--- !u!114 &6713500748335540162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6713500748335540158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d627af088ac6d54883f22f87c920d95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 691689612814400602, guid: 70942b47baebfa94eb4c0906593e44c5, type: 3}
+  _container: {fileID: 711373601}
+  _minCapacity: 5
+  _maxCapacity: 10
+  _autoExpand: 0
 --- !u!1 &7275819858473902911
 GameObject:
   m_ObjectHideFlags: 0

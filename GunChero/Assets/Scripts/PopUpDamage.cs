@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+[RequireComponent(typeof(Pool))]
 public class PopUpDamage : MonoBehaviour
 {
-    [SerializeField] private GameObject _popUpDamage, _tager;
-    
+    [SerializeField] private Transform _popUp;
+    private Pool _pool;
+
+    private void Start()
+    {
+        _pool = GetComponent<Pool>();
+    }
 
     public void CreatePopUpDamage(int damage)
     {
-        GameObject popUpDamageInstance = Instantiate(_popUpDamage, _tager.transform) as GameObject;
-        popUpDamageInstance.transform.GetChild(0).GetComponent<TextMeshPro>().SetText($"{damage}");
+        Vector3 popUpPos = _popUp.position;
+        PoolObject popUpDamage = _pool.GetFreeElement(popUpPos);
+        popUpDamage.GetComponent<TextMeshPro>().SetText($"{damage}");
     }
 
 }
