@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private int _health;
-    [SerializeField] private PopUpDamage _popUpDamage;
     [SerializeField] private CapsuleCollider _deathCollider;
+    [SerializeField] private ParticleSystem _medCrosses;
+    private PopUpDamage _popUpDamage;
     private CapsuleCollider _capsuleCollider;
     private bool _isAlive = true;
     private bool _isShoot;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        _popUpDamage = GetComponent<PopUpDamage>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
     }
 
@@ -25,6 +27,12 @@ public class PlayerController : MonoBehaviour
     {
         _health -= damage;
         _popUpDamage.CreatePopUpDamage(damage);
+    }
+
+    public void TakeHeal(int heal)
+    {
+        _health += heal;
+        _medCrosses.Play();
     }
 
     private void Update()

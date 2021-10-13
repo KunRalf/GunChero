@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Pool))]
 public class EnemuGunShooting : MonoBehaviour
 {
     [SerializeField] private Transform _shotPoint;
-    [SerializeField] private GameObject _bullet;
     private PlayerController _player;
-    private EnemyGunAnimator _animator;
     private float _delayBeforeShoot = 0.5f;
     private float _timer;
+    private Pool _pool;
 
     private void Start()
     {
+        _pool = GetComponent<Pool>();
         _player = FindObjectOfType<PlayerController>();
-        _animator = GetComponent<EnemyGunAnimator>();
     }
 
     private void Update()
@@ -27,17 +27,12 @@ public class EnemuGunShooting : MonoBehaviour
             {
                 _timer = 0f;
                 Shoot();
-                _animator.ShootAnim();
             }
         }
-
-
     }
 
     private void Shoot()
     {
-        GameObject bullet = Instantiate(_bullet) as GameObject;
-        bullet.transform.position = _shotPoint.position;
-        bullet.transform.rotation = _shotPoint.rotation;
+        _pool.GetFreeElement(_shotPoint.position, _shotPoint.rotation);
     }
 }

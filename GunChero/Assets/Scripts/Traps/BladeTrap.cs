@@ -5,7 +5,6 @@ using UnityEngine;
 public class BladeTrap : MonoBehaviour
 {
     private PlayerController _player;
-    private float _delayDamage = 1f;
     private int _damage = 5;
     private float _delayBeforeDamage = 0.8f;
     private float _timer;
@@ -14,6 +13,15 @@ public class BladeTrap : MonoBehaviour
     private void Start()
     {
         _player = FindObjectOfType<PlayerController>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        PlayerController player = other.GetComponent<PlayerController>();
+        if (player != null)
+        {
+                _player.TakeDamage(_damage);
+        }
     }
 
     private void OnTriggerStay(Collider other)

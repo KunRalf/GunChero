@@ -13,7 +13,6 @@ public class Pool : MonoBehaviour
 
     private List<PoolObject> _pool;
 
-
     private void Start()
     {
         CreatePool();

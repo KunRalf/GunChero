@@ -24,7 +24,7 @@ public class EventService : MonoBehaviour
     }
 
     public event Action<EnemyController> OnEnemyCreate;
-    public void CallOnJellyCreate(EnemyController enemy)
+    public void CallOnEnemyCreate(EnemyController enemy)
     {
         OnEnemyCreate?.Invoke(enemy);
     }

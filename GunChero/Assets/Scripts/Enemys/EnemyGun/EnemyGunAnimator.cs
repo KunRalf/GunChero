@@ -16,7 +16,7 @@ public class EnemyGunAnimator : MonoBehaviour
 
     public void ShootAnim()
     {
-        _animator.SetTrigger(ATTACK_ANIM);
+        _animator.SetBool(ATTACK_ANIM, true);
     }
 
 }

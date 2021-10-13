@@ -6,17 +6,16 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] private int _health = 100;
     [SerializeField] private ParticleSystem _targetAura;
+    private PopUpDamage _popUpDamage;
     private EnemyDetector _enemyDetector;
 
-    private void Awake()
-    {
-        
-    }
+    public int Health => _health;
 
     private void Start()
     {
+        _popUpDamage = GetComponent<PopUpDamage>();
         _enemyDetector = FindObjectOfType<EnemyDetector>();
-        EventService.Instance.CallOnJellyCreate(this);
+        EventService.Instance.CallOnEnemyCreate(this);
       }
 
 
@@ -31,6 +30,7 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _health -= damage;
+        _popUpDamage.CreatePopUpDamage(damage);
     }
 
     public void TurnOffEnemy()

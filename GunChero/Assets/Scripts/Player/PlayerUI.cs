@@ -7,13 +7,12 @@ using TMPro;
 public class PlayerUI : MonoBehaviour
 {
     [SerializeField] private Slider _hpSlider;
+    [SerializeField] private PlayerController _playerController;
     private PlayerCamera _camera;
-    private PlayerController _playerController;
-
+    
     private void Start()
     {
         _camera = FindObjectOfType<PlayerCamera>();
-        _playerController = FindObjectOfType<PlayerController>();
         _hpSlider.minValue = 0;
         _hpSlider.maxValue = _playerController.Health;
     }
